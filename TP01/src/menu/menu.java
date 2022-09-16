@@ -2,6 +2,7 @@ package menu;
 
 import ex01.ex01;
 import ex02.ex02;
+import ex03.ex03;
 import utils.utils;
 
 public class menu {
@@ -14,6 +15,7 @@ public class menu {
         System.out.println("MENU :");
         System.out.println("Tapez 1 pour l'exercice 1.");
         System.out.println("Tapez 2 pour l'exercice 2.");
+        System.out.println("Tapez 3 pour l'exercice 3.");
         System.out.println("Tapez 0 pour quitter.");
 
         int inputInt = utils.getInt();
@@ -23,6 +25,8 @@ public class menu {
                 ex01.main(args);
             case 2:
                 ex02.main(args);
+            case 3:
+                ex03.main(args);
             case 0:
                 System.out.println("Au revoir !");
                 System.exit(0);

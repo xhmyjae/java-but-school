@@ -36,6 +36,27 @@ public class utils {
         return sc.nextInt();
     }
 
+    public static int getBinary() {
+        Scanner sc = new Scanner(System.in);
+
+        while (!sc.hasNextInt()) {
+            System.out.println("Ce n'est pas une valeur binaire.");
+            sc.nextLine();
+        }
+
+        int scannedInt = sc.nextInt();
+
+        while (scannedInt != 0) {
+            if (scannedInt % 10 > 1) {
+                System.out.println("Ce n'est pas une valeur binaire.");
+                sc.nextLine();
+            }
+            scannedInt = scannedInt / 10;
+        }
+
+        return sc.nextInt();
+    }
+
     /**
      * Makes the user input a number to go back to the menu or end the program.
      * @param args
