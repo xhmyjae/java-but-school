@@ -33,28 +33,43 @@ public class utils {
             sc.nextLine();
         }
 
-        return sc.nextInt();
+        int num = sc.nextInt();
+        return num;
     }
 
     public static int getBinary() {
         Scanner sc = new Scanner(System.in);
 
         while (!sc.hasNextInt()) {
+            System.out.println("Ce n'est pas une valeur numerique.");
+            sc.nextLine();
+        }
+
+        int num = sc.nextInt();
+
+        while (!isBinaryNumber(num)) {
+            System.out.println(num);
             System.out.println("Ce n'est pas une valeur binaire.");
             sc.nextLine();
         }
 
-        int scannedInt = sc.nextInt();
+        return num;
+    }
 
-        while (scannedInt != 0) {
-            if (scannedInt % 10 > 1) {
-                System.out.println("Ce n'est pas une valeur binaire.");
-                sc.nextLine();
+    public static boolean isBinaryNumber(int num)
+    {
+        int copyOfNum = num;
+
+        while (copyOfNum != 0) {
+            if (copyOfNum % 10 > 1) {
+                return false;
             }
-            scannedInt = scannedInt / 10;
+            if (copyOfNum == 0 || copyOfNum == 1) {
+                break;
+            }
+            copyOfNum = copyOfNum / 10;
         }
-
-        return sc.nextInt();
+        return true;
     }
 
     /**
