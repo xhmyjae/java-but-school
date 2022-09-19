@@ -12,12 +12,10 @@ public class ex03 {
 
         switch (inputInt) {
             case 1:
-                System.out.println("Rentrez une valeur numerique :");
-                int inputInt2 = utils.getInt();
+                int inputInt2 = utils.getPositiveInt();
                 System.out.println("Le binaire de " + inputInt2 + " est " + decimalToBinary(inputInt2));
                 utils.leave(args);
             case 2:
-                System.out.println("Rentrez une valeur binaire :");
                 int inputBinary = utils.getBinary();
                 System.out.println("Le decimal de " + inputBinary + " est " + binaryToDecimal(inputBinary));
                 utils.leave(args);

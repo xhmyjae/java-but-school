@@ -26,6 +26,7 @@ public class utils {
      * @return input parsed as int
      */
     public static int getInt() {
+        System.out.println("Rentrez une valeur numerique :");
         Scanner sc = new Scanner(System.in);
 
         while (!sc.hasNextInt()) {
@@ -38,10 +39,11 @@ public class utils {
     }
 
     /**
-     * Gets a user imput and check if it's a binary number. If not, user has to input a new one.
-     * @return int, the binary number.
+     * Gets and checks if user input is a positive int, if not the code replays itself.
+     * @return input parsed as int
      */
-    public static int getBinary() {
+    public static int getPositiveInt() {
+        System.out.println("Rentrez une valeur numerique :");
         Scanner sc = new Scanner(System.in);
 
         while (!sc.hasNextInt()) {
@@ -51,10 +53,36 @@ public class utils {
 
         int num = sc.nextInt();
 
+        if (num < 0) {
+            return getPositiveInt();
+        }
+
+        return num;
+    }
+
+    /**
+     * Gets a user input and check if it's a binary number. If not, user has to input a new one.
+     * @return int, the binary number.
+     */
+    public static int getBinary() {
+        System.out.println("Rentrez une valeur binaire :");
+        Scanner sc = new Scanner(System.in);
+
+        while (!sc.hasNextInt()) {
+            System.out.println("Ce n'est pas une valeur numerique.");
+            sc.nextLine();
+        }
+
+        int num = sc.nextInt();
+
+        if (num < 0) {
+            return getBinary();
+        }
+
         while (!isBinaryNumber(num)) {
             System.out.println(num);
             System.out.println("Ce n'est pas une valeur binaire.");
-            sc.nextLine();
+            return getBinary();
         }
 
         return num;
