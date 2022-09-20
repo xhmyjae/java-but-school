@@ -119,7 +119,7 @@ public class utils {
     /**
      * Gets the average of the list placed in parameters.
      * @param arrayOfDoubles an array of doubles
-     * @return the average in it's double form.
+     * @return the average in its double form.
      */
     public static double getAverage(double arrayOfDoubles[]) {
         int arraySize = arrayOfDoubles.length;
