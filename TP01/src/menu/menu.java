@@ -14,13 +14,11 @@ public class menu {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println("MENU :");
-        System.out.println("Tapez 1 pour l'exercice 1.");
-        System.out.println("Tapez 2 pour l'exercice 2.");
-        System.out.println("Tapez 3 pour l'exercice 3.");
-        System.out.println("Tapez 5 pour l'exercice 5.");
-        System.out.println("Tapez 6 pour l'exercice 6.");
-        System.out.println("Tapez 0 pour quitter.");
+        System.out.println("MENU :\n");
+        for (int n = 1; n < 7; n++) {
+            System.out.println("Tapez " + n + " pour l'exercice " + n + ".");
+        }
+        System.out.println("Tapez 0 pour quitter.\n");
 
         int inputInt = utils.getInt();
 

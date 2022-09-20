@@ -11,10 +11,13 @@ public class utils {
      * @return input parsed as double
      */
     public static double getDouble() {
+        System.out.println("Entrez une valeur positive (0 pour terminer) :");
+        System.out.print("> ");
         Scanner sc = new Scanner(System.in);
 
         while (!sc.hasNextDouble()) {
             System.out.println("Ce n'est pas une valeur numerique.");
+            System.out.print("> ");
             sc.nextLine();
         }
 
@@ -27,15 +30,16 @@ public class utils {
      */
     public static int getInt() {
         System.out.println("Rentrez une valeur numerique :");
+        System.out.print("> ");
         Scanner sc = new Scanner(System.in);
 
         while (!sc.hasNextInt()) {
             System.out.println("Ce n'est pas une valeur numerique.");
+            System.out.print("> ");
             sc.nextLine();
         }
 
-        int num = sc.nextInt();
-        return num;
+        return sc.nextInt();
     }
 
     /**
@@ -43,11 +47,13 @@ public class utils {
      * @return input parsed as int
      */
     public static int getPositiveInt() {
-        System.out.println("Rentrez une valeur numerique :");
+        System.out.println("Rentrez une valeur numerique positive :");
+        System.out.print("> ");
         Scanner sc = new Scanner(System.in);
 
         while (!sc.hasNextInt()) {
             System.out.println("Ce n'est pas une valeur numerique.");
+            System.out.print("> ");
             sc.nextLine();
         }
 
@@ -66,10 +72,12 @@ public class utils {
      */
     public static int getBinary() {
         System.out.println("Rentrez une valeur binaire :");
+        System.out.print("> ");
         Scanner sc = new Scanner(System.in);
 
         while (!sc.hasNextInt()) {
             System.out.println("Ce n'est pas une valeur numerique.");
+            System.out.print("> ");
             sc.nextLine();
         }
 
@@ -80,7 +88,6 @@ public class utils {
         }
 
         while (!isBinaryNumber(num)) {
-            System.out.println(num);
             System.out.println("Ce n'est pas une valeur binaire.");
             return getBinary();
         }
@@ -161,15 +168,10 @@ public class utils {
      * @param args
      */
     public static void leave(String[] args) {
-        System.out.println("Appuyez sur 0 pour quitter ou 1 pour retourner au menu.");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("\nAppuyez sur 0 pour quitter ou 1 pour retourner au menu.");
+        int num = getInt();
 
-        while (!sc.hasNextInt()) {
-            System.out.println("Appuyez sur 0 pour quitter ou 1 pour retourner au menu.");
-            sc.nextLine();
-        }
-
-        switch (sc.nextInt()) {
+        switch (num) {
             case 1:
                 menu.main(args);
             case 0:
