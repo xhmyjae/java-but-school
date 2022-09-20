@@ -9,20 +9,16 @@ public class ex02 {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println("Saisir la taille de l'arbre :");
-        int inputInt = utils.getInt();
-
-        if (inputInt < 0) {
-            System.out.println("Le nombre doit etre superieur a 0.");
-            main(args);
-        }
+        System.out.println("EXERCICE 2 : \n");
+        System.out.print("Saisir la taille de l'arbre, ");
+        int inputInt = utils.getPositiveInt();
 
         for (int i=0; i<inputInt; i++) {
-            System.out.println("=".repeat(inputInt+2 - i) + "*".repeat(i) + "*" + "*".repeat(i) + "=".repeat(inputInt+2 - i));
+            System.out.println("=".repeat(inputInt+2 - i) + utils.ANSI_GREEN + "*".repeat(i) + "*" + "*".repeat(i) + utils.ANSI_RESET + "=".repeat(inputInt+2 - i));
         }
 
-        System.out.println("=".repeat(inputInt+2) + "*" + "=".repeat(inputInt+2));
-        System.out.println("=".repeat(inputInt+1) + "***" + "=".repeat(inputInt+1));
+        System.out.println("=".repeat(inputInt+2) + utils.ANSI_YELLOW + "*" + utils.ANSI_RESET + "=".repeat(inputInt+2));
+        System.out.println("=".repeat(inputInt+1) + utils.ANSI_YELLOW + "***" + utils.ANSI_RESET + "=".repeat(inputInt+1));
 
         utils.leave(args);
     }
