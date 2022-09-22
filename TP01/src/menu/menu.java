@@ -3,6 +3,7 @@ package menu;
 import ex01.ex01;
 import ex02.ex02;
 import ex03.ex03;
+import ex04.ex04;
 import ex05.ex05;
 import ex06.ex06;
 import utils.utils;
@@ -29,6 +30,8 @@ public class menu {
                 ex02.main(args);
             case 3:
                 ex03.main(args);
+            case 4:
+                ex04.main(args);
             case 5:
                 ex05.main(args);
             case 6:
