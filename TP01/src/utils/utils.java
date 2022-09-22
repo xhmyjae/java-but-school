@@ -152,13 +152,16 @@ public class utils {
             System.out.println();
         }
 
+        double sumAverage = 0;
         for (int c = 0; c < matrix.length; c++) {
             arrayColumn = new double[matrix.length];
             for (int r = 0; r < matrix.length; r++) {
                 arrayColumn[r] = matrix [r][c];
             }
             System.out.printf("(%.2f)   ", getAverage(arrayColumn));
+            sumAverage += getAverage(arrayColumn);
         }
+        System.out.printf("(%.2f)        ", sumAverage);
 
         System.out.println();
     }

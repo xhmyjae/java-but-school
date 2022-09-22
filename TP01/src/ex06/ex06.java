@@ -10,7 +10,8 @@ public class ex06 {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.print("Entrez la taille du tableau (0 pour revenir au menu) : ");
+        System.out.println("EXERCICE 6 : \n");
+        System.out.print("Entrez la taille du tableau (0 pour revenir au menu), ");
         int arraySize = utils.getInt();
 
         if (arraySize == 0) {
