@@ -4,6 +4,10 @@ import utils.utils;
 
 public class ex03 {
 
+    /**
+     * Converts an inputed number to its binary or decimal form. It cannot convert negative number.
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("EXERCICE 3 : \n");
         System.out.println("Convertir en :");
@@ -29,10 +33,20 @@ public class ex03 {
         }
     }
 
+    /**
+     * Convert an int to its binary format.
+     * @param inputInt the int that will be converted
+     * @return
+     */
     public static int decimalToBinary(int inputInt) {
         return Integer.parseInt(Integer.toBinaryString(inputInt));
     }
 
+    /**
+     * Converts a binary int to its decimal format.
+     * @param inputBinary the int that will be converted
+     * @return
+     */
     public static double binaryToDecimal(int inputBinary) {
         return Integer.parseInt(String.valueOf(inputBinary),2);
     }
