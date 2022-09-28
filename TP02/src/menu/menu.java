@@ -1,4 +1,4 @@
-package menu;
+package src.menu;
 
 public class menu {
 }
