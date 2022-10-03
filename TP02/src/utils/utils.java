@@ -2,6 +2,7 @@ package utils;
 
 import menu.menu;
 import java.util.Scanner;
+import java.math.BigInteger;
 
 public class utils {
 
@@ -21,6 +22,21 @@ public class utils {
         }
 
         return sc.nextInt();
+    }
+
+    /**
+     * Calculates the factorial of the int put in parameters.
+     * @param num an int
+     * @return BigInteger (the result of the factorial)
+     */
+    public static BigInteger factorial(int num) {
+        BigInteger factorial = BigInteger.ONE;
+
+        for (int i = num; i > 0; i--) {
+            factorial = factorial.multiply(BigInteger.valueOf(i));
+        }
+
+        return factorial;
     }
 
     /**
