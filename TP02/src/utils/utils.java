@@ -25,6 +25,24 @@ public class utils {
     }
 
     /**
+     * Gets and checks if user input is a double, if not the code replays itself.
+     * @return input parsed as double
+     */
+    public static double getDouble() {
+        System.out.println("Entrez une valeur numerique :");
+        System.out.print("> ");
+        Scanner sc = new Scanner(System.in);
+
+        while (!sc.hasNextDouble()) {
+            System.out.println("Ce n'est pas une valeur numerique.");
+            System.out.print("> ");
+            sc.nextLine();
+        }
+
+        return sc.nextDouble();
+    }
+
+    /**
      * Calculates the factorial of the int put in parameters.
      * @param num an int
      * @return BigInteger (the result of the factorial)
