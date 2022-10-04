@@ -6,6 +6,10 @@ import java.util.Arrays;
 
 public class ex02 {
 
+    /**
+     * Takes a number and load method An with it as a parameter
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("\nEXERCICE 2 :\n");
 
@@ -20,6 +24,11 @@ public class ex02 {
         utils.leave(args);
     }
 
+    /**
+     * Calculates and returns the result of a formula in a loop till iteration reaches n.
+     * @param n double (the maximum of iteration for the loop)
+     * @return an array of the two doubles changed by the loop iterations
+     */
     public static double[] An(int n) {
         double x = 4;
         double y = 2*Math.sqrt(2);
