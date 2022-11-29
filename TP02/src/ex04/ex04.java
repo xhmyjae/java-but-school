@@ -21,7 +21,7 @@ public class ex04 {
         System.out.print("Entrez le deuxieme nombre, ");
         do {
             p = utils.getInt();
-        } while (p <= 0);
+        } while (p < 1 || n <= p);
 
         BigInteger result = utils.factorial(n).divide( utils.factorial(n-p).multiply(utils.factorial(p)) );
 
