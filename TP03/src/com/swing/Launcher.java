@@ -1,15 +1,17 @@
-import javax.swing.*;
-import com.swing.*;
+package com.swing;
 
-public class Main {
+import javax.swing.*;
+
+public class Launcher {
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 MainWindow main = new MainWindow();
+//                main.show();
 //                JFrameOne frame1 = new JFrameOne();
 //
-//                JFrameTwo frame2 = new JFrameTwo();
             }
         });
     }
