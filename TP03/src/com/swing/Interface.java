@@ -6,6 +6,7 @@ public class Interface {
     private JPanel panel1;
     private JPanel panel2;
     private JButton exercice1Button;
+    private JTextField textField1;
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
