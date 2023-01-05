@@ -2,11 +2,8 @@ package com.swing;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.concurrent.Flow;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import com.swing.Ex01Panel;
+import com.swing.ex01.Ex01Panel;
 
 public class MainWindow {
 
@@ -22,7 +19,7 @@ public class MainWindow {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(1280, 720);
         frame.setResizable(false);
-        frame.setLayout(new BorderLayout(0, 0));
+        frame.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setBackground(Color.decode("#272640"));
@@ -34,11 +31,11 @@ public class MainWindow {
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         menuPanel.setBackground(Color.decode("#212F45"));
-        menuPanel.setPreferredSize(new Dimension(250,720));
+        menuPanel.setPreferredSize(new Dimension(240,720));
         // Menu buttons
         for (int i = 1; i <= 5; i++) {
             JButton button = new JButton("Button " + i);
-            button.setPreferredSize(new Dimension(280, 50));
+            button.setPreferredSize(new Dimension(240, 50));
             button.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
             button.setBackground(Color.decode("#212F45"));
             button.setForeground(Color.decode("#7F9AB3"));
@@ -50,10 +47,12 @@ public class MainWindow {
 
         // Main panel
         CardLayout cardLayout = new CardLayout();
+        cardLayout.setHgap(0);
+        cardLayout.setVgap(0);
 
         JPanel mainPanel = new JPanel(cardLayout);
         mainPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        mainPanel.setPreferredSize(new Dimension(1030, 720));
+        mainPanel.setPreferredSize(new Dimension(1020, 720));
         mainPanel.setBackground(Color.decode("#272640"));
         frame.add(mainPanel);
 
@@ -72,21 +71,5 @@ public class MainWindow {
 //                cardLayout.show(mainPanel, "ex01Panel");
 //            }
 //        });
-//        ex02Button.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                cardLayout.show(mainPanel, "ex02Panel");
-//            }
-//        });
-
-
-//        frame.add(panel1);
-//        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
-//        panel.setBackground(Color.BLACK);
-//        panel.setPreferredSize(new Dimension(250, 250));
-//
-//        Button button = new Button("button");
-//        panel.add(button);
-//
     }
 }

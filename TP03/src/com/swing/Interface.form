@@ -107,6 +107,10 @@
                 <constraints/>
                 <properties/>
               </component>
+              <component id="66e69" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+                <constraints/>
+                <properties/>
+              </component>
             </children>
           </grid>
           <grid id="c3265" layout-manager="FlowLayout" hgap="10" vgap="10" flow-align="1">
