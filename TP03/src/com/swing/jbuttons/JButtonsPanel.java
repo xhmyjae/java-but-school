@@ -1,6 +1,7 @@
 package com.swing.jbuttons;
 
 import javax.swing.*;
+import javax.swing.ImageIcon;
 
 public class JButtonsPanel extends JPanel {
 
@@ -9,7 +10,10 @@ public class JButtonsPanel extends JPanel {
     }
 
     public void initialize() {
-        JButton button = new JButton("button 1");
-        add(button);
+        JButton button1 = new JButton("Button simple");
+        add(button1);
+
+        JButton button2 = new JButton("Button fantaisie", new ImageIcon("resources/icon1.png"));
+        add(button2);
     }
 }
