@@ -1,12 +1,11 @@
-package com.swing.ex01;
+package com.swing.etudiants;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
-public class Ex01Panel extends JPanel {
+public class EtudiantsPanel extends JPanel {
 
-    public Ex01Panel() {
+    public EtudiantsPanel() {
         initialize();
     }
 
@@ -31,10 +30,20 @@ public class Ex01Panel extends JPanel {
         label1.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
         label1.setForeground(Color.decode("#7F9AB3"));
         panelLeft.add(label1, gbc);
+        JLabel nom = new JLabel("Nom :");
+        nom.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+        nom.setForeground(Color.decode("#7F9AB3"));
+        panelLeft.add(nom, gbc);
         JTextField textField1 = new JTextField();
         panelLeft.add(textField1, gbc);
+        JLabel prenom = new JLabel("Prenom :");
+        prenom.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+        prenom.setForeground(Color.decode("#7F9AB3"));
+        panelLeft.add(prenom, gbc);
+        JTextField textField2 = new JTextField();
+        panelLeft.add(textField2, gbc);
         JLabel label2 = new JLabel("Notes :");
-        label2.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+        label2.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
         label2.setForeground(Color.decode("#7F9AB3"));
         panelLeft.add(label2, gbc);
         String notes[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};

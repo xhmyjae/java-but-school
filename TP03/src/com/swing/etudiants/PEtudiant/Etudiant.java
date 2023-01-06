@@ -1,8 +1,16 @@
-package com.swing.ex01.PEtudiant;
+package com.swing.etudiants.PEtudiant;
+
+import java.util.Map;
 
 public class Etudiant {
+    String nom;
+    String prenom;
+    Map<String, Integer> notes;
 
-    public Etudiant() {
+    public Etudiant(String nom, String prenom, Map<String, Integer> notes) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.notes = notes;
     }
 
     public void afficherNote() {

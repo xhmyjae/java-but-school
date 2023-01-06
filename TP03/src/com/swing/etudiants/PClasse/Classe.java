@@ -1,10 +1,13 @@
-package com.swing.ex01.PClasse;
+package com.swing.etudiants.PClasse;
 
-import com.swing.ex01.PEtudiant.Etudiant;
+import com.swing.etudiants.PEtudiant.Etudiant;
+
+import java.util.Map;
 
 public class Classe extends Etudiant {
 
-    public Classe() {
+    public Classe(String nom, String prenom, Map<String, Integer> notes) {
+        super(nom, prenom, notes);
     }
 
     public void afficher() {

@@ -89,46 +89,12 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="2659c" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+          <component id="e8125" class="javax.swing.JButton" binding="button1" default-binding="true">
             <constraints/>
             <properties>
-              <preferredSize width="700" height="720"/>
+              <text value="Button"/>
             </properties>
-            <border type="none"/>
-            <children>
-              <component id="1593b" class="javax.swing.JLabel">
-                <constraints/>
-                <properties>
-                  <font name="Bahnschrift" size="20"/>
-                  <text value="Créer un étudiant :"/>
-                </properties>
-              </component>
-              <component id="2f9b5" class="javax.swing.JTextField" binding="textField1" default-binding="true">
-                <constraints/>
-                <properties/>
-              </component>
-              <component id="66e69" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
-                <constraints/>
-                <properties/>
-              </component>
-            </children>
-          </grid>
-          <grid id="c3265" layout-manager="FlowLayout" hgap="10" vgap="10" flow-align="1">
-            <constraints/>
-            <properties>
-              <preferredSize width="330" height="720"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="1c160" class="javax.swing.JLabel">
-                <constraints/>
-                <properties>
-                  <font name="Bahnschrift" size="20"/>
-                  <text value="Liste de classe :"/>
-                </properties>
-              </component>
-            </children>
-          </grid>
+          </component>
         </children>
       </grid>
     </children>

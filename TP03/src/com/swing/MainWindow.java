@@ -3,7 +3,8 @@ package com.swing;
 import javax.swing.*;
 import java.awt.*;
 
-import com.swing.ex01.Ex01Panel;
+import com.swing.etudiants.EtudiantsPanel;
+import com.swing.jbuttons.JButtonsPanel;
 
 public class MainWindow {
 
@@ -33,16 +34,32 @@ public class MainWindow {
         menuPanel.setBackground(Color.decode("#212F45"));
         menuPanel.setPreferredSize(new Dimension(240,720));
         // Menu buttons
-        for (int i = 1; i <= 5; i++) {
-            JButton button = new JButton("Button " + i);
-            button.setPreferredSize(new Dimension(240, 50));
-            button.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-            button.setBackground(Color.decode("#212F45"));
-            button.setForeground(Color.decode("#7F9AB3"));
-            button.setFocusable(false);
-            button.setBorder(BorderFactory.createLineBorder(Color.decode("#212F45")));
-            menuPanel.add(button);
-        }
+        JButton button1 = new JButton("Etudiants");
+        button1.setPreferredSize(new Dimension(240, 60));
+        button1.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+        button1.setBackground(Color.decode("#212F45"));
+        button1.setForeground(Color.decode("#7F9AB3"));
+        button1.setFocusable(false);
+        button1.setBorder(BorderFactory.createLineBorder(Color.decode("#212F45")));
+        menuPanel.add(button1);
+        JButton button2 = new JButton("JButtons");
+        button2.setPreferredSize(new Dimension(240, 60));
+        button2.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+        button2.setBackground(Color.decode("#212F45"));
+        button2.setForeground(Color.decode("#7F9AB3"));
+        button2.setFocusable(false);
+        button2.setBorder(BorderFactory.createLineBorder(Color.decode("#212F45")));
+        menuPanel.add(button2);
+//        for (int i = 1; i <= 5; i++) {
+//            JButton button = new JButton("Button " + i);
+//            button.setPreferredSize(new Dimension(240, 50));
+//            button.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+//            button.setBackground(Color.decode("#212F45"));
+//            button.setForeground(Color.decode("#7F9AB3"));
+//            button.setFocusable(false);
+//            button.setBorder(BorderFactory.createLineBorder(Color.decode("#212F45")));
+//            menuPanel.add(button);
+//        }
         frame.add(menuPanel, BorderLayout.WEST);
 
         // Main panel
@@ -50,26 +67,21 @@ public class MainWindow {
         cardLayout.setHgap(0);
         cardLayout.setVgap(0);
 
-        JPanel mainPanel = new JPanel(cardLayout);
-        mainPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(cardLayout);
         mainPanel.setPreferredSize(new Dimension(1020, 720));
         mainPanel.setBackground(Color.decode("#272640"));
         frame.add(mainPanel);
 
-        Ex01Panel ex01Panel = new Ex01Panel();
-//        Ex02Panel ex02Panel = new Ex02Panel();
-        mainPanel.add(ex01Panel, "ex01Panel");
+        EtudiantsPanel etudiantsPanel = new EtudiantsPanel();
+        JButtonsPanel jButtonsPanel = new JButtonsPanel();
+        mainPanel.add(etudiantsPanel, "etudiantsPanel");
+        mainPanel.add(jButtonsPanel, "jButtonsPanel");
 //        mainPanel.add(ex02Panel, "ex02Panel");
 
         // Change main panel on menu buttons click
-//        ex01Button.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                // switch cardLayout to ex01Panel
-//
-//
-//                cardLayout.show(mainPanel, "ex01Panel");
-//            }
-//        });
+        button1.addActionListener(e -> cardLayout.show(mainPanel, "etudiantsPanel"));
+        button2.addActionListener(e -> cardLayout.show(mainPanel, "jButtonsPanel"));
+
     }
 }

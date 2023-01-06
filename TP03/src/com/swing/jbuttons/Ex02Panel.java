@@ -1,4 +1,4 @@
-package com.swing;
+package com.swing.jbuttons;
 
 import javax.swing.*;
 import javax.swing.border.Border;
