@@ -3,6 +3,7 @@ package com.swing;
 import javax.swing.*;
 import java.awt.*;
 
+import com.swing.boxlayout.BoxLayoutPanel;
 import com.swing.etudiants.EtudiantsPanel;
 import com.swing.jbuttons.JButtonsPanel;
 
@@ -38,6 +39,8 @@ public class MainWindow {
         menuButtonDesign(menuPanel, button1);
         JButton button2 = new JButton("JButtons");
         menuButtonDesign(menuPanel, button2);
+        JButton button3 = new JButton("BoxLayout");
+        menuButtonDesign(menuPanel, button3);
         frame.add(menuPanel, BorderLayout.WEST);
 
         // Main panel
@@ -47,20 +50,24 @@ public class MainWindow {
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(cardLayout);
-        mainPanel.setPreferredSize(new Dimension(1020, 720));
+        mainPanel.setPreferredSize(new Dimension(1024, 720));
         mainPanel.setBackground(Color.decode("#272640"));
         frame.add(mainPanel);
 
         EtudiantsPanel etudiantsPanel = new EtudiantsPanel();
         JButtonsPanel jButtonsPanel = new JButtonsPanel();
+        BoxLayoutPanel boxLayoutPanel = new BoxLayoutPanel();
         etudiantsPanel.setBackground(Color.decode("#272640"));
         jButtonsPanel.setBackground(Color.decode("#272640"));
+        boxLayoutPanel.setBackground(Color.decode("#272640"));
         mainPanel.add(etudiantsPanel, "etudiantsPanel");
         mainPanel.add(jButtonsPanel, "jButtonsPanel");
+        mainPanel.add(boxLayoutPanel, "boxLayoutPanel");
 
         // Change main panel on menu buttons click
         button1.addActionListener(e -> cardLayout.show(mainPanel, "etudiantsPanel"));
         button2.addActionListener(e -> cardLayout.show(mainPanel, "jButtonsPanel"));
+        button3.addActionListener(e -> cardLayout.show(mainPanel, "boxLayoutPanel"));
 
     }
 

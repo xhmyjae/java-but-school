@@ -89,7 +89,33 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="e8125" class="javax.swing.JButton" binding="button1" default-binding="true">
+          <component id="c99d3" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="Nom :"/>
+            </properties>
+          </component>
+          <component id="2d5cd" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+            <constraints/>
+            <properties/>
+          </component>
+          <component id="6122d" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="ec230" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
+            <constraints/>
+            <properties/>
+          </component>
+          <component id="4d3bb" class="javax.swing.JButton" binding="button1" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Button"/>
+            </properties>
+          </component>
+          <component id="ff3c1" class="javax.swing.JButton" binding="button2" default-binding="true">
             <constraints/>
             <properties>
               <text value="Button"/>
