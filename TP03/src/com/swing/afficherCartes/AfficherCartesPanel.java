@@ -1,4 +1,14 @@
 package com.swing.afficherCartes;
 
-public class AfficherCartesPanel {
+import javax.swing.*;
+
+public class AfficherCartesPanel extends JPanel {
+
+    public AfficherCartesPanel() {
+        initialize();
+    }
+
+    public void initialize() {
+    }
+
 }

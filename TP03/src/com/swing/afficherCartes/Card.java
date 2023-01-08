@@ -1,31 +1,22 @@
 package com.swing.afficherCartes;
 
+import java.awt.*;
+
 public class Card {
-    private String name;
-    private String value;
-    private String color;
-    private String image;
 
-    public Card(String name, String value, String color, String image) {
-        this.name = name;
-        this.value = value;
-        this.color = color;
-        this.image = image;
+    private Image[] getImages() {
+        Image[] images = new Image[52];
+        // cut deck image in 52 pieces (13 columns and 4 rows)
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 13; j++) {
+                images[i * 13 + j] = Toolkit.getDefaultToolkit().createImage("src/resources/deck.png").getScaledInstance(100, 150, Image.SCALE_SMOOTH);
+            }
+        }
+        return images;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public String getImage() {
-        return image;
+    public Image getRandomCard() {
+        Image[] images = getImages();
+        return images[(int) (Math.random() * 52)];
     }
 }
