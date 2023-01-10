@@ -7,9 +7,6 @@ public class Main {
             @Override
             public void run() {
                 MainWindow main = new MainWindow();
-//                JFrameOne frame1 = new JFrameOne();
-//
-//                JFrameTwo frame2 = new JFrameTwo();
             }
         });
     }

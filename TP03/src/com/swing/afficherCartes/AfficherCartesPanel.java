@@ -9,6 +9,7 @@ public class AfficherCartesPanel extends JPanel {
     }
 
     public void initialize() {
+
     }
 
 }
