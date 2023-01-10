@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.ImageIcon;
 import java.awt.*;
 
+import utils.utils;
+
 public class JButtonsPanel extends JPanel {
 
     public JButtonsPanel() {
@@ -15,10 +17,10 @@ public class JButtonsPanel extends JPanel {
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         setPreferredSize(new Dimension(1020, 720));
         JButton button1 = new JButton("Button simple");
-        buttonDesign(button1);
+        utils.buttonDesign(button1, this, 230, 60);
         ImageIcon icon = new ImageIcon(createImageIcon("/resources/icon1.png", "icon1").getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
         JButton button2 = new JButton("Button fantaisie", icon);
-        buttonDesign(button2);
+        utils.buttonDesign(button2, this, 230, 60);
 
         button1.addActionListener(e -> {
             showMessage(this, button1);
@@ -28,14 +30,14 @@ public class JButtonsPanel extends JPanel {
         });
     }
 
-    private void buttonDesign(JButton button) {
-        button.setPreferredSize(new Dimension(230, 60));
-        button.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-        button.setBackground(Color.decode("#1C1E26"));
-        button.setForeground(Color.decode("#7F9AB3"));
-        button.setFocusable(false);
-        add(button);
-    }
+//    private void buttonDesign(JButton button) {
+//        button.setPreferredSize(new Dimension(230, 60));
+//        button.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+//        button.setBackground(Color.decode("#1C1E26"));
+//        button.setForeground(Color.decode("#7F9AB3"));
+//        button.setFocusable(false);
+//        add(button);
+//    }
 
     protected ImageIcon createImageIcon(String path, String description) {
         java.net.URL imgURL = getClass().getResource(path);

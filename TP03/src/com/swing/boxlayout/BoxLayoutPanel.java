@@ -3,6 +3,8 @@ package com.swing.boxlayout;
 import javax.swing.*;
 import java.awt.*;
 
+import utils.utils;
+
 public class BoxLayoutPanel extends JPanel {
 
     public BoxLayoutPanel() {
@@ -54,12 +56,12 @@ public class BoxLayoutPanel extends JPanel {
         buttons.setLayout(new BoxLayout(buttons, BoxLayout.LINE_AXIS));
 
         JButton ok = new JButton("OK");
-        ok.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+        utils.buttonDesign(ok, this, 120, 60);
         ok.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttons.add(ok);
         buttons.add(Box.createHorizontalGlue());
         JButton cancel = new JButton("Cancel");
-        cancel.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+        utils.buttonDesign(cancel, this, 120, 60);
         cancel.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttons.add(cancel);
 

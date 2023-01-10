@@ -121,6 +121,12 @@
               <text value="Button"/>
             </properties>
           </component>
+          <component id="d90ea" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="Label"/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>
