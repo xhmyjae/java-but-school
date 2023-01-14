@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Classe extends Etudiant {
 
-    public Classe(String nom, String prenom, Map<String, Integer> notes) {
+    public Classe(String nom, String prenom, Map<String, Map<Integer, Double>> notes) {
         super(nom, prenom, notes);
     }
 

@@ -16,7 +16,8 @@ public class Card {
     }
 
     public Image getRandomCard(Image[] images) {
-        return images[(int) (Math.random() * images.length)];
+        int random = (int) (Math.random() * images.length);
+        return images[random];
     }
 
     public Image[] removeCard(Image card, Image[] images) {

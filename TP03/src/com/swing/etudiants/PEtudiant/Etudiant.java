@@ -5,9 +5,9 @@ import java.util.Map;
 public class Etudiant {
     String nom;
     String prenom;
-    Map<String, Integer> notes;
+    Map<String, Map<Integer, Double>> notes;
 
-    public Etudiant(String nom, String prenom, Map<String, Integer> notes) {
+    public Etudiant(String nom, String prenom, Map<String, Map<Integer, Double>> notes) {
         this.nom = nom;
         this.prenom = prenom;
         this.notes = notes;
@@ -23,7 +23,8 @@ public class Etudiant {
         return 0;
     }
 
-    public void setNote(String matiere, String note, double valeur) {
+    public void setNote(Map<String, Map<Integer, Double>> notes) {
+
     }
 
     public void setNote(String matiere, String note, int valeur, double commentaire) {

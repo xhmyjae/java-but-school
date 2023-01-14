@@ -2,6 +2,7 @@ package com.swing.afficherCartes;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Objects;
 
 import utils.utils;
@@ -16,6 +17,8 @@ public class AfficherCartesPanel extends JPanel {
         setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         setPreferredSize(new Dimension(800, 600));
 
+        final List cards;
+
         final Image[][] allCards = {new Card().getImages()};
 
         JPanel cardsPanel = new JPanel();
@@ -26,12 +29,16 @@ public class AfficherCartesPanel extends JPanel {
         utils.buttonDesign(button, this, 230, 60);
         button.addActionListener(e -> {
             // add a random card to the panel
-            Image randomCard = new Card().getRandomCard(allCards[0]);
-            // add it to cardsPanel
-            cardsPanel.add(new JLabel(new ImageIcon(randomCard)));
+            Image card = new Card().getRandomCard(allCards[0]);
+            // display it in cardsPanel
+            JLabel label = new JLabel();
+            label.setIcon(new ImageIcon(card));
+            label.setPreferredSize(new Dimension(100, 150));
+            // remove it from allCards
+            allCards[0] = new Card().removeCard(card, allCards[0]);
 
 //            add(new JLabel(new ImageIcon(randomCard == null ? null : randomCard.getScaledInstance(100, 150, Image.SCALE_SMOOTH))));
-            allCards[0] = new Card().removeCard(randomCard, allCards[0]);
+//            allCards[0] = new Card().removeCard(randomCard, allCards[0]);
         });
         add(cardsPanel);
         add(button);

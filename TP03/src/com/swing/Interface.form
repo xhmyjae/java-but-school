@@ -77,6 +77,12 @@
               <text value="Exercice 5"/>
             </properties>
           </component>
+          <component id="3100e" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="Label"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="9a66c" layout-manager="FlowLayout" hgap="0" vgap="0" flow-align="0">
