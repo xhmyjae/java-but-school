@@ -1,25 +1,29 @@
 package com.swing.afficherCartes;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.sql.SQLOutput;
 import java.util.Objects;
 
 import utils.utils;
 
 public class AfficherCartesPanel extends JPanel {
 
-    public AfficherCartesPanel() {
+    public AfficherCartesPanel() throws IOException {
         initialize();
     }
 
-    public void initialize() {
+    public void initialize() throws IOException {
         setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         setPreferredSize(new Dimension(800, 600));
 
-        final List cards;
-
-        final Image[][] allCards = {new Card().getImages()};
+        new Card();
+        final String[][] cardsLinks = {Card.getCardsImages()};
 
         JPanel cardsPanel = new JPanel();
         cardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
@@ -28,22 +32,30 @@ public class AfficherCartesPanel extends JPanel {
         JButton button = new JButton("Afficher une carte");
         utils.buttonDesign(button, this, 230, 60);
         button.addActionListener(e -> {
-            // add a random card to the panel
-            Image card = new Card().getRandomCard(allCards[0]);
-            // display it in cardsPanel
-            JLabel label = new JLabel();
-            label.setIcon(new ImageIcon(card));
-            label.setPreferredSize(new Dimension(100, 150));
-            // remove it from allCards
-            allCards[0] = new Card().removeCard(card, allCards[0]);
-
-//            add(new JLabel(new ImageIcon(randomCard == null ? null : randomCard.getScaledInstance(100, 150, Image.SCALE_SMOOTH))));
-//            allCards[0] = new Card().removeCard(randomCard, allCards[0]);
+            // add a random card from array
+            int random = (int) (Math.random() * cardsLinks[0].length);
+            try {
+                URL url = null;
+                try {
+                    url = new URL(cardsLinks[0][random]);
+                } catch (MalformedURLException malformedURLException) {
+                    malformedURLException.printStackTrace();
+                }
+                BufferedImage image = ImageIO.read(url);
+                System.out.println(cardsLinks[0][random]);
+                JLabel label = new JLabel(new ImageIcon(image));
+                label.setPreferredSize(new Dimension(100, 150));
+                cardsPanel.add(label);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            // remove card from cardsLinks array
+            cardsLinks[0] = Card.removeLinkFromArray(cardsLinks[0], random);
         });
         add(cardsPanel);
         add(button);
 
-        JLabel label = new JLabel("Nombre de cartes restantes: " + allCards[0].length);
+        JLabel label = new JLabel("Nombre de cartes restantes: " + cardsLinks[0].length);
         label.setForeground(Color.decode("#7F9AB3"));
         label.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
         add(label);

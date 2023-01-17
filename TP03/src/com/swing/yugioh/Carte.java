@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-public class Carte implements ICarteYuGiOh {
+//public class Carte implements ICarteYuGiOh {
+public class Carte {
     private String nom;
     private String numero;
     private String description;

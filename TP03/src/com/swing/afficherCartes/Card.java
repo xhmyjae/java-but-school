@@ -1,34 +1,57 @@
 package com.swing.afficherCartes;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.Objects;
+
+import utils.Requester;
 
 public class Card {
 
-    public Image[] getImages() {
-        Image[] images = new Image[52];
-        // cut deck image in 52 pieces (13 columns and 4 rows)
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 13; j++) {
-                images[i * 13 + j] = Toolkit.getDefaultToolkit().createImage("src/resources/deck.png").getScaledInstance(100, 150, Image.SCALE_SMOOTH);
-            }
+    public static String[] getCardsImages() throws IOException {
+//        URL url = new URL("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
+//        String info = Requester.Requester(url);
+//        String deck_id = info.substring(info.indexOf("deck_id") + 10, info.indexOf("remaining") - 3);
+
+        URL url2 = new URL("https://deckofcardsapi.com/api/deck/new/draw/?count=52");
+        String info2 = Requester.Requester(url2);
+        String[] links = new String[52];
+        for (int i = 0; i < 52; i++) {
+            links[i] = info2.substring(info2.indexOf("image") + 8, info2.indexOf("images") - 3);
+            info2 = info2.substring(info2.indexOf("images") + 8);
         }
-        return images;
+        return links;
     }
 
-    public Image getRandomCard(Image[] images) {
-        int random = (int) (Math.random() * images.length);
-        return images[random];
-    }
-
-    public Image[] removeCard(Image card, Image[] images) {
-        Image[] newImages = new Image[images.length - 1];
-        int index = 0;
-        for (Image image : images) {
-            if (image != card) {
-                newImages[index] = image;
-                index++;
+    public static String[] removeLinkFromArray(String[] links, int index) {
+        String[] newLinks = new String[links.length - 1];
+        for (int i = 0; i < links.length; i++) {
+            if (i < index) {
+                newLinks[i] = links[i];
+            } else if (i > index) {
+                newLinks[i - 1] = links[i];
             }
         }
-        return newImages;
+        return newLinks;
+    }
+
+    public static Image[] removeTheImageFromArray(Image[] arr, int index) {
+        if (arr == null || index < 0 || index >= arr.length) {
+            return arr;
+        }
+        Image[] anotherArray = new Image[arr.length - 1];
+        for (int i = 0, k = 0; i < arr.length; i++) {
+            if (i == index) {
+                continue;
+            }
+            anotherArray[k++] = arr[i];
+        }
+        return anotherArray;
     }
 }

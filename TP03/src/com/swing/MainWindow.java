@@ -2,6 +2,7 @@ package com.swing;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 import com.swing.afficherCartes.AfficherCartesPanel;
 import com.swing.boxlayout.BoxLayoutPanel;
@@ -13,11 +14,11 @@ public class MainWindow {
 
     private JFrame frame;
 
-    public MainWindow() {
+    public MainWindow() throws IOException {
         initialize();
     }
 
-    public void initialize() {
+    public void initialize() throws IOException {
         frame = new JFrame();
         frame.setTitle("TP 03");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -30,7 +31,7 @@ public class MainWindow {
         menu();
     }
 
-    public void menu() {
+    public void menu() throws IOException {
         // Menu panel
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));

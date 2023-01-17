@@ -2,6 +2,8 @@ package utils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class utils {
 
@@ -13,5 +15,4 @@ public class utils {
         button.setFocusable(false);
         panel.add(button);
     }
-
 }

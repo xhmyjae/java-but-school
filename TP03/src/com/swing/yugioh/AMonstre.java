@@ -18,14 +18,14 @@ public abstract class AMonstre {
         return null;
     }
 
-    public void saveCarte(String numero) throws FileNotFoundException {
-        File file = new File("cartes/" + numero + ".txt");
-        FileOutputStream fos = new FileOutputStream(file);
-        try {
-            fos.write((this.getNom() + ";" + this.getDescription() + ";" + this.getNumero() + ";" + this.getNiveau() + ";" + this.getAttribut() + ";" + this.getType() + ";" + this.getAtk() + ";" + this.getDef()).getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void saveCarte(String numero) throws FileNotFoundException {
+//        File file = new File("cartes/" + numero + ".txt");
+//        FileOutputStream fos = new FileOutputStream(file);
+//        try {
+////            fos.write((this.getNom() + ";" + this.getDescription() + ";" + this.getNumero() + ";" + this.getNiveau() + ";" + this.getAttribut() + ";" + this.getType() + ";" + this.getAtk() + ";" + this.getDef()).getBytes());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 }
