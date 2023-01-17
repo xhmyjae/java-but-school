@@ -23,8 +23,10 @@ public class Card {
         String info2 = Requester.Requester(url2);
         String[] links = new String[52];
         for (int i = 0; i < 52; i++) {
-            links[i] = info2.substring(info2.indexOf("image") + 8, info2.indexOf("images") - 3);
-            info2 = info2.substring(info2.indexOf("images") + 8);
+            links[i] = info2.substring(info2.indexOf("image") + 7, info2.indexOf("images") - 3);
+            info2 = info2.substring(info2.indexOf("images") + 7);
+            // remove https from link
+            System.out.println(links[i]);
         }
         return links;
     }

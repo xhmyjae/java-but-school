@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLOutput;
@@ -35,20 +36,37 @@ public class AfficherCartesPanel extends JPanel {
             // add a random card from array
             int random = (int) (Math.random() * cardsLinks[0].length);
             try {
-                URL url = null;
-                try {
-                    url = new URL(cardsLinks[0][random]);
-                } catch (MalformedURLException malformedURLException) {
-                    malformedURLException.printStackTrace();
-                }
-                BufferedImage image = ImageIO.read(url);
+                URL url = new URL(cardsLinks[0][random]);
                 System.out.println(cardsLinks[0][random]);
-                JLabel label = new JLabel(new ImageIcon(image));
-                label.setPreferredSize(new Dimension(100, 150));
-                cardsPanel.add(label);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.connect();
+                cardsPanel.add(new JLabel(new ImageIcon(ImageIO.read(connection.getInputStream()))));
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
+
+
+
+//            try {
+//                URL url = null;
+//                try {
+//                    url = new URL(cardsLinks[0][random]);
+//                } catch (MalformedURLException malformedURLException) {
+//                    malformedURLException.printStackTrace();
+//                }
+//                assert url != null;
+//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                connection.setRequestMethod("GET");
+//                connection.connect();
+//                BufferedImage image = ImageIO.read(connection.getInputStream());
+//                System.out.println(cardsLinks[0][random]);
+//                JLabel label = new JLabel(new ImageIcon(image));
+//                label.setPreferredSize(new Dimension(100, 150));
+//                cardsPanel.add(label);
+//            } catch (IOException ioException) {
+//                ioException.printStackTrace();
+//            }
             // remove card from cardsLinks array
             cardsLinks[0] = Card.removeLinkFromArray(cardsLinks[0], random);
         });
