@@ -1,11 +1,9 @@
 package com.swing.yugioh;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 
-//public class Carte implements ICarteYuGiOh {
-public class Carte {
+public class Carte implements ICarteYuGiOh {
+//public class Carte {
     private String nom;
     private String numero;
     private String description;
@@ -27,4 +25,31 @@ public class Carte {
     public String getDescription() {
         return description;
     }
+
+    @Override
+    public void saveCarte(String numero, File file) throws FileNotFoundException {
+        System.out.println(file);
+        try {
+            if (file.createNewFile()) {
+                try {
+                    FileWriter writer = new FileWriter(file, true);
+                    writer.write(this.nom + ";" + this.description + ";");
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                throw new FileNotFoundException("Le fichier existe déjà");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void loadCarte(String numero) throws FileNotFoundException {
+
+    }
+
+
 }

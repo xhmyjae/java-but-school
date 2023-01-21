@@ -1,5 +1,7 @@
 package com.swing.yugioh;
 
+import java.io.*;
+
 public class Monstre extends Carte {
     private Integer niveau;
     private EnumAttributsMonstre.attribut attribut;
@@ -7,8 +9,8 @@ public class Monstre extends Carte {
     private Integer atk;
     private Integer def;
 
-    public Monstre(String nom, String description, String numero, Integer niveau, EnumAttributsMonstre.attribut attribut, String type, Integer atk, Integer def) {
-        super(nom, description, numero);
+    public Monstre(String nom, String numero, String description, Integer niveau, EnumAttributsMonstre.attribut attribut, String type, Integer atk, Integer def) {
+        super(nom, numero, description);
         this.niveau = niveau;
         this.attribut = attribut;
         this.type = type;
@@ -34,5 +36,18 @@ public class Monstre extends Carte {
 
     public Integer getDef() {
         return def;
+    }
+
+    @Override
+    public void saveCarte(String numero, File file) throws FileNotFoundException {
+        super.saveCarte(numero, file);
+        try {
+            // append to file
+            FileWriter writer = new FileWriter(file, true);
+            writer.write(this.niveau + ";" + this.attribut + ";" + this.type + ";" + this.atk + ";" + this.def + ";");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
