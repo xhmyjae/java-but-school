@@ -14,46 +14,48 @@ import utils.Requester;
 
 public class Card {
 
-    public static String[] getCardsImages() throws IOException {
-//        URL url = new URL("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
-//        String info = Requester.Requester(url);
-//        String deck_id = info.substring(info.indexOf("deck_id") + 10, info.indexOf("remaining") - 3);
-
-        URL url2 = new URL("https://deckofcardsapi.com/api/deck/new/draw/?count=52");
-        String info2 = Requester.Requester(url2);
-        String[] links = new String[52];
+    public static Image[] getCardsImages() throws IOException {
+        BufferedImage deck = ImageIO.read(Objects.requireNonNull(Card.class.getClassLoader().getResource("resources/cardDeck.png")));
+        Image[] cards = new Image[52];
+        int x = 0;
+        int y = 0;
+        int width = 226;
+        int height = 314;
         for (int i = 0; i < 52; i++) {
-            links[i] = info2.substring(info2.indexOf("image") + 7, info2.indexOf("images") - 3);
-            info2 = info2.substring(info2.indexOf("images") + 7);
-            // remove https from link
-            System.out.println(links[i]);
-        }
-        return links;
-    }
-
-    public static String[] removeLinkFromArray(String[] links, int index) {
-        String[] newLinks = new String[links.length - 1];
-        for (int i = 0; i < links.length; i++) {
-            if (i < index) {
-                newLinks[i] = links[i];
-            } else if (i > index) {
-                newLinks[i - 1] = links[i];
+            cards[i] = deck.getSubimage(x, y, width, height);
+            x += width;
+            if (x >= 226 * 13) {
+                x = 0;
+                y += height;
             }
         }
-        return newLinks;
+        return cards;
     }
 
     public static Image[] removeTheImageFromArray(Image[] arr, int index) {
-        if (arr == null || index < 0 || index >= arr.length) {
-            return arr;
-        }
-        Image[] anotherArray = new Image[arr.length - 1];
-        for (int i = 0, k = 0; i < arr.length; i++) {
-            if (i == index) {
-                continue;
-            }
-            anotherArray[k++] = arr[i];
-        }
-        return anotherArray;
+        // return array without the image at index
+        return Arrays.stream(arr).filter(val -> val != arr[index]).toArray(Image[]::new);
+
+//        // make new array
+//        Image[] newArr = new Image[arr.length - 1];
+//        // copy all elements before index
+//        if (index >= 0) System.arraycopy(arr, 0, newArr, 0, index);
+//        // copy all elements after index
+//        if (arr.length - (index + 1) >= 0)
+//            System.arraycopy(arr, index + 1, newArr, index + 1 - 1, arr.length - (index + 1));
+//        return newArr;
+
+//        if (arr == null || index < 0 || index >= arr.length) {
+//            return arr;
+//        }
+//        Image[] anotherArray = new Image[arr.length - 1];
+//        for (int i = 0, k = 0; i < arr.length; i++) {
+//            if (i == index) {
+//                continue;
+//            }
+//            anotherArray[k++] = arr[i];
+//        }
+//        return anotherArray;
     }
+
 }
