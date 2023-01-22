@@ -50,4 +50,28 @@ public class Monstre extends Carte {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public static void loadCarte(String numero) throws FileNotFoundException {
+        super.loadCarte(numero);
+        File file = new File("src/com/swing/yugioh/savesCartes/monstres/" + numero + ".txt");
+        if (file.exists()) {
+            try {
+                FileReader reader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(reader);
+                String line = bufferedReader.readLine();
+                String[] data = line.split(";");
+                this.niveau = Integer.parseInt(data[2]);
+                this.attribut = EnumAttributsMonstre.attribut.valueOf(data[3]);
+                this.type = data[4];
+                this.atk = Integer.parseInt(data[5]);
+                this.def = Integer.parseInt(data[6]);
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            return;
+        }
+    }
 }

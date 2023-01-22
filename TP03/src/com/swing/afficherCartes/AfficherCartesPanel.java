@@ -23,8 +23,7 @@ public class AfficherCartesPanel extends JPanel {
         setLayout(new FlowLayout());
         setPreferredSize(new Dimension(800, 600));
 
-//        new Card();
-//        final String[][] cardsLinks = {Card.getCardsImages()};
+
         final Image[][] cardsImages = {Card.getCardsImages()};
 
 

@@ -28,7 +28,6 @@ public class Carte implements ICarteYuGiOh {
 
     @Override
     public void saveCarte(String numero, File file) throws FileNotFoundException {
-        System.out.println(file);
         try {
             if (file.createNewFile()) {
                 try {
@@ -48,6 +47,22 @@ public class Carte implements ICarteYuGiOh {
 
     @Override
     public void loadCarte(String numero) throws FileNotFoundException {
+        File file = new File("src/com/swing/yugioh/savesCartes/monstres/" + numero + ".txt");
+        if (file.exists()) {
+            try {
+                FileReader reader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(reader);
+                String line = bufferedReader.readLine();
+                String[] data = line.split(";");
+                this.nom = data[0];
+                this.description = data[1];
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            throw new FileNotFoundException("Le fichier n'existe pas");
+        }
 
     }
 

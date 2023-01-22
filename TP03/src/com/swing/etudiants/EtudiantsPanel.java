@@ -1,7 +1,11 @@
 package com.swing.etudiants;
 
+import com.swing.etudiants.PEtudiant.Etudiant;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EtudiantsPanel extends JPanel {
 
@@ -54,60 +58,92 @@ public class EtudiantsPanel extends JPanel {
         label4.setForeground(Color.decode("#7F9AB3"));
         panelLeft.add(label4);
 
-        JPanel panel3 = new JPanel();
-        panel3.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-        panel3.setPreferredSize(new Dimension(650, 50));
-        panel3.setBackground(Color.decode("#272640"));
-        JLabel label5 = new JLabel("Matiere :");
-        label5.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-        label5.setForeground(Color.decode("#7F9AB3"));
-        JTextField textField3 = new JTextField(20);
-        panel3.add(label5);
-        panel3.add(textField3);
-        JLabel label6 = new JLabel("Note :");
-        label6.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-        label6.setForeground(Color.decode("#7F9AB3"));
-        JTextField textField4 = new JTextField(2);
-        panel3.add(label6);
-        panel3.add(textField4);
-        JLabel label7 = new JLabel("Coef :");
-        label7.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-        label7.setForeground(Color.decode("#7F9AB3"));
-        JTextField textField5 = new JTextField(2);
-        panel3.add(label7);
-        panel3.add(textField5);
-        JButton button1 = new JButton("+");
-        button1.setPreferredSize(new Dimension(50, 30));
-        panel3.add(button1);
-        button1.addActionListener(e -> {
-            JLabel label8 = new JLabel("Note :");
-            label6.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-            label6.setForeground(Color.decode("#7F9AB3"));
-            JTextField textField6 = new JTextField(2);
-            panel3.add(label8);
-            panel3.add(textField6);
-            JLabel label9 = new JLabel("Coef :");
-            label7.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-            label7.setForeground(Color.decode("#7F9AB3"));
-            JTextField textField7 = new JTextField(2);
-            panel3.add(label9);
-            panel3.add(textField7);
+        Matiere[] matieres = new Matiere[3];
+
+        // button
+        JButton button = new JButton("+ matiere");
+        button.setPreferredSize(new Dimension(100, 30));
+        panelLeft.add(button);
+        button.addActionListener(e -> {
+            matieres[matieres.length - 1] = addMatiere(panelLeft);
         });
-        panelLeft.add(panel3);
+        matieres[0] = addMatiere(panelLeft);
+
+        JButton button4 = new JButton("Ajouter l'eleve");
+        button4.setPreferredSize(new Dimension(200, 30));
+        panelLeft.add(button4);
+        button4.addActionListener(e -> {
+            Etudiant etudiant = new Etudiant(textField1.getText(), textField2.getText(), matieres);
+//            etudiant.setNote(null);
+        });
 
 
+//      right panel
 
-
-//        // right panel
-//        panelRight.setLayout(new GridLayout(5, 1, 10, 10));
-//        panelRight.setPreferredSize(new Dimension(330, 720));
-//        panelRight.setBackground(Color.decode("#272640"));
-//        JLabel label3 = new JLabel("Liste de la classe :");
-//        label3.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-//        label3.setForeground(Color.decode("#7F9AB3"));
-//        panelRight.add(label3);
 
         add(panelLeft);
         add(panelRight);
+    }
+
+    private Matiere addMatiere(JPanel mainPanel) {
+        Note[] notes = new Note[3];
+        Note[] newNote;
+        // create panel
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+//        panel.setPreferredSize(new Dimension(650));
+        panel.setBackground(Color.decode("#272640"));
+        // create label
+        JLabel label = new JLabel("Matiere :");
+        label.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+        label.setForeground(Color.decode("#7F9AB3"));
+        // create text field
+        JTextField textField = new JTextField(20);
+        // add label and text field to panel
+        panel.add(label);
+        panel.add(textField);
+        // button
+        JPanel notesPanel = new JPanel();
+        notesPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+        JButton button = new JButton("+");
+        button.setPreferredSize(new Dimension(50, 30));
+        panel.add(button);
+        button.addActionListener(e -> {
+            // add addNote to notes
+            notes[notes.length - 1] = addNote(notesPanel);
+        });
+        notes[0] = addNote(notesPanel);
+        mainPanel.add(panel);
+        mainPanel.add(notesPanel);
+        revalidate();
+        repaint();
+        return new Matiere(textField.getText(), notes);
+    }
+
+    private Note addNote(JPanel panel) {
+        // create label
+        JPanel notePanel = new JPanel();
+        JLabel label = new JLabel("Note :");
+        label.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+        label.setForeground(Color.decode("#7F9AB3"));
+        // create text field
+        JTextField textField = new JTextField(2);
+        // add coef
+        JLabel label2 = new JLabel("Coef :");
+        label2.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+        label2.setForeground(Color.decode("#7F9AB3"));
+        // create text field
+        JTextField textField2 = new JTextField(2);
+        // add label and text field to panel
+        notePanel.add(label);
+        notePanel.add(textField);
+        notePanel.add(label2);
+        notePanel.add(textField2);
+        panel.add(notePanel);
+        revalidate();
+        repaint();
+
+        return null;
+//        return new Note(Double.parseDouble(textField.getText()), Integer.parseInt(textField2.getText()));
     }
 }
