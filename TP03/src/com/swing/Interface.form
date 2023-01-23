@@ -85,54 +85,30 @@
           </component>
         </children>
       </grid>
-      <grid id="9a66c" layout-manager="FlowLayout" hgap="0" vgap="0" flow-align="0">
+      <grid id="9a66c" binding="mainPanel" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints/>
         <properties>
           <background color="-14211520"/>
+          <focusable value="false"/>
+          <inheritsPopupMenu value="false"/>
           <maximumSize width="1030" height="720"/>
           <minimumSize width="1030" height="720"/>
           <preferredSize width="1030" height="720"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="c99d3" class="javax.swing.JLabel">
-            <constraints/>
-            <properties>
-              <text value="Nom :"/>
-            </properties>
-          </component>
-          <component id="2d5cd" class="javax.swing.JTextField" binding="textField1" default-binding="true">
-            <constraints/>
-            <properties/>
-          </component>
-          <component id="6122d" class="javax.swing.JLabel">
-            <constraints/>
+          <component id="b4bfc" class="javax.swing.JLabel">
+            <constraints border-constraint="West"/>
             <properties>
               <text value="Label"/>
             </properties>
           </component>
-          <component id="ec230" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
-            <constraints/>
+          <grid id="c9af4" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="Center"/>
             <properties/>
-          </component>
-          <component id="4d3bb" class="javax.swing.JButton" binding="button1" default-binding="true">
-            <constraints/>
-            <properties>
-              <text value="Button"/>
-            </properties>
-          </component>
-          <component id="ff3c1" class="javax.swing.JButton" binding="button2" default-binding="true">
-            <constraints/>
-            <properties>
-              <text value="Button"/>
-            </properties>
-          </component>
-          <component id="d90ea" class="javax.swing.JLabel">
-            <constraints/>
-            <properties>
-              <text value="Label"/>
-            </properties>
-          </component>
+            <border type="none"/>
+            <children/>
+          </grid>
         </children>
       </grid>
     </children>
