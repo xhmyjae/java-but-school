@@ -24,7 +24,7 @@ public class AfficherCartesPanel extends JPanel {
         setPreferredSize(new Dimension(800, 600));
 
         new Card();
-        final String[][] cardsLinks = {Card.getCardsImages()};
+        final URL[][] cardsLinks = {Card.getCardsImages()};
 
         JPanel cardsPanel = new JPanel();
         cardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
@@ -36,12 +36,7 @@ public class AfficherCartesPanel extends JPanel {
             // add a random card from array
             int random = (int) (Math.random() * cardsLinks[0].length);
             try {
-                URL url = new URL(cardsLinks[0][random]);
-                System.out.println(cardsLinks[0][random]);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.connect();
-                cardsPanel.add(new JLabel(new ImageIcon(ImageIO.read(connection.getInputStream()))));
+                cardsPanel.add(new JLabel(new ImageIcon(ImageIO.read(cardsLinks[0][random]))));
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
@@ -68,7 +63,7 @@ public class AfficherCartesPanel extends JPanel {
 //                ioException.printStackTrace();
 //            }
             // remove card from cardsLinks array
-            cardsLinks[0] = Card.removeLinkFromArray(cardsLinks[0], random);
+//            cardsLinks[0] = Card.removeLinkFromArray(cardsLinks[0], random);
         });
         add(cardsPanel);
         add(button);

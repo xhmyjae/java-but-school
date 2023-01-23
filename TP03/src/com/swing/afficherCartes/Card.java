@@ -14,17 +14,19 @@ import utils.Requester;
 
 public class Card {
 
-    public static String[] getCardsImages() throws IOException {
+    public static URL[] getCardsImages() throws IOException {
 //        URL url = new URL("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
 //        String info = Requester.Requester(url);
 //        String deck_id = info.substring(info.indexOf("deck_id") + 10, info.indexOf("remaining") - 3);
 
         URL url2 = new URL("https://deckofcardsapi.com/api/deck/new/draw/?count=52");
         String info2 = Requester.Requester(url2);
-        String[] links = new String[52];
+        URL[] links = new URL[52];
         for (int i = 0; i < 52; i++) {
-            links[i] = info2.substring(info2.indexOf("image") + 7, info2.indexOf("images") - 3);
-            info2 = info2.substring(info2.indexOf("images") + 7);
+            String link = info2.substring(info2.indexOf("image") + 8, info2.indexOf("images") - 3);
+            links[i] = new URL(link);
+            info2 = info2.substring(info2.indexOf("images") + 8);
+            // convert string to url
             // remove https from link
             System.out.println(links[i]);
         }
