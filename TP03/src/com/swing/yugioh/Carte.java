@@ -1,11 +1,9 @@
 package com.swing.yugioh;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 
-//public class Carte implements ICarteYuGiOh {
-public class Carte {
+public class Carte implements ICarteYuGiOh {
+//public class Carte {
     private String nom;
     private String numero;
     private String description;
@@ -27,4 +25,46 @@ public class Carte {
     public String getDescription() {
         return description;
     }
+
+    @Override
+    public void saveCarte(String numero, File file) throws FileNotFoundException {
+        try {
+            if (file.createNewFile()) {
+                try {
+                    FileWriter writer = new FileWriter(file, true);
+                    writer.write(this.nom + ";" + this.description + ";");
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                throw new FileNotFoundException("Le fichier existe déjà");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void loadCarte(String numero) throws FileNotFoundException {
+        File file = new File("src/com/swing/yugioh/savesCartes/monstres/" + numero + ".txt");
+        if (file.exists()) {
+            try {
+                FileReader reader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(reader);
+                String line = bufferedReader.readLine();
+                String[] data = line.split(";");
+                this.nom = data[0];
+                this.description = data[1];
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            throw new FileNotFoundException("Le fichier n'existe pas");
+        }
+
+    }
+
+
 }

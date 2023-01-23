@@ -1,13 +1,14 @@
 package com.swing.etudiants.PClasse;
 
+import com.swing.etudiants.Matiere;
 import com.swing.etudiants.PEtudiant.Etudiant;
 
 import java.util.Map;
 
 public class Classe extends Etudiant {
 
-    public Classe(String nom, String prenom, Map<String, Map<Integer, Double>> notes) {
-        super(nom, prenom, notes);
+    public Classe(String nom, String prenom, Matiere[] matiere) {
+        super(nom, prenom, matiere);
     }
 
     public void afficher() {
