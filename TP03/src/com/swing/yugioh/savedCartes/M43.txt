@@ -1,0 +1,1 @@
+Monstre 24;Description 38;Monstre;6;TENEBRES;Type 96;675;219;

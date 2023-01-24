@@ -97,7 +97,12 @@ public class CarteMagiePanel extends JPanel {
 
         JButton changeCarte = new JButton("Changer de carte");
         utils.buttonDesign(changeCarte, rightPanel, 200, 50);
-        // load nouvelle carte
+        changeCarte.addActionListener(e -> {
+            removeAll();
+            initialize();
+            revalidate();
+            repaint();
+        });
 
         JButton save = new JButton("Sauvegarder");
         utils.buttonDesign(save, rightPanel, 200, 50);
@@ -109,6 +114,10 @@ public class CarteMagiePanel extends JPanel {
                 try {
                     magiePiege.saveCarte(magiePiege.getNumero());
                     save.setEnabled(false);
+                    removeAll();
+                    initialize();
+                    revalidate();
+                    repaint();
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
@@ -122,6 +131,5 @@ public class CarteMagiePanel extends JPanel {
             }
         }
         rightPanel.add(comboBox);
-        // load la carte specifique
     }
 }
