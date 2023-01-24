@@ -21,8 +21,6 @@ public class CarteMonstrePanel extends JPanel {
         setBackground(Color.decode("#272640"));
         setPreferredSize(new Dimension(1024, 720));
 
-//        Monstre monstre = new Monstre("Invocateur Dragon Bleu", "YS14-FR017", "Si cette carte est envoyée depuis le Terrain au Cimetière : vous pouvez ajouter 1 Monstre Normal de Type Dragon/ Guerrier/Magicien depuis votre Deck à votre main.", "Monstre", 4, EnumAttributsMonstre.attribut.VENT, "Magicien/Effet", 1500, 600);
-
         Monstre monstre = Monstre.generateRandomMonsterCard();
 
         JPanel leftPanel = new JPanel();

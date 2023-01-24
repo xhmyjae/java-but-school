@@ -177,7 +177,8 @@ public class EtudiantsPanel extends JPanel {
                 });
                 Etudiant etudiant = new Etudiant(nom, prenom, matieres);
                 finalClasse.addEtudiant(etudiant);
-                // reload page window
+                removeAll();
+                initialize();
                 revalidate();
                 repaint();
             }
