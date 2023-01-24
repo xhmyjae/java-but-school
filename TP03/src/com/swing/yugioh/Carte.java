@@ -33,6 +33,11 @@ public class Carte implements ICarteYuGiOh {
         return cardType;
     }
 
+    /**
+     * Il crée un fichier avec le nom du numéro de la carte et y écrit le nom, la description et le type de la carte
+     *
+     * @param numero le numéro de la carte
+     */
     @Override
     public void saveCarte(String numero) throws FileNotFoundException {
         File file = new File("src/com/swing/yugioh/savedCartes/" + numero + ".txt");
@@ -54,6 +59,11 @@ public class Carte implements ICarteYuGiOh {
         }
     }
 
+    /**
+     * Il lit un fichier et stocke les données dans l'objet
+     *
+     * @param numero le numéro de la carte
+     */
     @Override
     public void loadCarte(String numero) throws FileNotFoundException {
         File file = new File("src/com/swing/yugioh/savesCartes/" + numero + ".txt");
@@ -75,6 +85,11 @@ public class Carte implements ICarteYuGiOh {
         }
     }
 
+    /**
+     * Il vérifie si un fichier existe dans un répertoire spécifique
+     *
+     * @return Une valeur booléenne.
+     */
     public boolean hasBeenSaved() {
         File file = new File("src/com/swing/yugioh/savedCartes/" + this.numero + ".txt");
         return file.exists();

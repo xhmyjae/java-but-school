@@ -25,6 +25,9 @@ public class EtudiantsPanel extends JPanel {
         initialize();
     }
 
+    /**
+     * Il crée un nouvel étudiant et l'ajoute à la classe
+     */
     public void initialize() {
         setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         setPreferredSize(new Dimension(1020, 720));
@@ -33,9 +36,7 @@ public class EtudiantsPanel extends JPanel {
         Map<JTextField, Map<JTextField, JComboBox>> map = new HashMap();
 
         JPanel panelLeft = new JPanel();
-//        panelLeft.setPreferredSize(new Dimension(300, 710));
         JPanel panelRight = new JPanel();
-//        panelRight.setPreferredSize(new Dimension(250, 710));
 
         panelLeft.setLayout(new BoxLayout(panelLeft, BoxLayout.Y_AXIS));
         add(panelLeft);
@@ -69,7 +70,6 @@ public class EtudiantsPanel extends JPanel {
         buttonMatiere.addActionListener(e -> {
             indexMatiere[0] += 1;
             if (indexMatiere[0] > 2) {
-                // disable buttonMatiere
                 buttonMatiere.setEnabled(false);
             }
             JPanel panelMatiere = new JPanel();
@@ -97,7 +97,6 @@ public class EtudiantsPanel extends JPanel {
                 textFieldMatiere.setEnabled(false);
                 indexNote[0] += 1;
                 if (indexNote[0] > 2) {
-                    // disable buttonNote
                     buttonNote.setEnabled(false);
                 }
                 JPanel panelNote = new JPanel();
@@ -184,7 +183,6 @@ public class EtudiantsPanel extends JPanel {
             }
         });
 
-        // right panel
         panelRight.setLayout(new BoxLayout(panelRight, BoxLayout.Y_AXIS));
         panelRight.setBackground(Color.decode("#212F45"));
         Double[] moyennes = new Double[classe.getEtudiants().length];

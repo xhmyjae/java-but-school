@@ -12,8 +12,10 @@ public class JButtonsPanel extends JPanel {
         initialize();
     }
 
+    /**
+     * Il crée deux boutons, l'un avec un texte simple et l'autre avec une icône et un texte
+     */
     public void initialize() {
-        // center buttons in panel
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         setPreferredSize(new Dimension(1020, 720));
         JButton button1 = new JButton("Button simple");
@@ -30,15 +32,13 @@ public class JButtonsPanel extends JPanel {
         });
     }
 
-//    private void buttonDesign(JButton button) {
-//        button.setPreferredSize(new Dimension(230, 60));
-//        button.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-//        button.setBackground(Color.decode("#1C1E26"));
-//        button.setForeground(Color.decode("#7F9AB3"));
-//        button.setFocusable(false);
-//        add(button);
-//    }
-
+    /**
+     * Si le chemin n'est pas nul, renvoie l'icône de l'image, sinon imprime un message d'erreur
+     *
+     * @param path Le chemin d'accès au fichier image.
+     * @param description La description de l'image.
+     * @return Un objet ImageIcon.
+     */
     protected ImageIcon createImageIcon(String path, String description) {
         java.net.URL imgURL = getClass().getResource(path);
         if (imgURL != null) {
@@ -49,6 +49,12 @@ public class JButtonsPanel extends JPanel {
         }
     }
 
+    /**
+     * Il affiche une boîte de dialogue de message avec le texte du bouton qui a été cliqué
+     *
+     * @param panel Le panneau sur lequel se trouve le bouton.
+     * @param button le bouton qui a été cliqué
+     */
     private void showMessage(JPanel panel, JButton button) {
         if (button.getText().equals("Button fantaisie")) {
             button.setIcon(new ImageIcon(createImageIcon("/resources/icon2.png", "icon2").getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH)));

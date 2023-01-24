@@ -17,6 +17,11 @@ public class Note {
         return note;
     }
 
+    /**
+     * Il renvoie la valeur de la note multipliée par le coefficient
+     *
+     * @return La valeur de la note multipliée par le coefficient.
+     */
     public Double getValeur() {
         return note * coef;
     }

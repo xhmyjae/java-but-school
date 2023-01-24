@@ -20,13 +20,16 @@ public class MagiePiege extends Carte {
         return icone;
     }
 
-
+    /**
+     * Il enregistre le type et l'icône de la carte dans un fichier
+     *
+     * @param numero le numéro de carte
+     */
     @Override
     public void saveCarte(String numero) throws FileNotFoundException {
         super.saveCarte(numero);
         File file = new File("src/com/swing/yugioh/savedCartes/" + numero + ".txt");
         try {
-            // append to file
             FileWriter writer = new FileWriter(file, true);
             writer.write(this.type + ";" + this.icone + ";");
             writer.close();
@@ -35,6 +38,11 @@ public class MagiePiege extends Carte {
         }
     }
 
+    /**
+     * Il charge la carte à partir d'un fichier
+     *
+     * @param numero le numéro de carte
+     */
     @Override
     public void loadCarte(String numero) throws FileNotFoundException {
         super.loadCarte(numero);
@@ -56,7 +64,11 @@ public class MagiePiege extends Carte {
         }
     }
 
-    // generate random monster card
+    /**
+     * Il génère une carte MagiePiege aléatoire
+     *
+     * @return Un nouvel objet MagiePiege.
+     */
     public static MagiePiege generateRandomMagiePiegeCard() {
         String nom = "MagiePiege" + (int) (Math.random() * 100);
         String numero = "MP" + (int) (Math.random() * 100);

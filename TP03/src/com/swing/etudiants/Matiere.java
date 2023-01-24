@@ -17,6 +17,11 @@ public class Matiere {
         return notes;
     }
 
+    /**
+     * Il calcule la moyenne des notes
+     *
+     * @return La moyenne des notes.
+     */
     public Double getMoyenne() {
         Double moyenne = 0.0;
         for (Note note : notes) {

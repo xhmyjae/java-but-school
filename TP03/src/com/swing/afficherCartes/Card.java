@@ -14,6 +14,11 @@ import utils.Requester;
 
 public class Card {
 
+    /**
+     * Il prend l'image du jeu de cartes et la divise en 52 images distinctes, une pour chaque carte
+     *
+     * @return Un tableau d'images.
+     */
     public static Image[] getCardsImages() throws IOException {
         BufferedImage deck = ImageIO.read(Objects.requireNonNull(Card.class.getClassLoader().getResource("resources/cardDeck.png")));
         Image[] cards = new Image[52];
@@ -32,6 +37,14 @@ public class Card {
         return cards;
     }
 
+    /**
+     * Il prend un tableau d'images et un index, et renvoie un nouveau tableau d'images qui est le même que le tableau
+     * d'origine, sauf que l'image à l'index donné est supprimée
+     *
+     * @param arr Le tableau à partir duquel supprimer l'image.
+     * @param index L'index de l'image que vous souhaitez supprimer.
+     * @return Un nouveau tableau avec l'élément à l'index supprimé.
+     */
     public static Image[] removeTheImageFromArray(Image[] arr, int index) {
         return Arrays.stream(arr).filter(val -> val != arr[index]).toArray(Image[]::new);
     }

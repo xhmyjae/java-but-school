@@ -18,12 +18,11 @@ public class Etudiant {
         this.matiere = matiere;
     }
 
-    public void afficherNote() {
-    }
-
-    public void afficherNote(String matiere) {
-    }
-
+    /**
+     * Il renvoie la moyenne de la moyenne des notes de toutes les matières
+     *
+     * @return La moyenne des notes de l'élève.
+     */
     public Double moyenne() {
         Double moyenne = 0.0;
         for (Matiere matiere : matiere) {
@@ -32,8 +31,10 @@ public class Etudiant {
         return moyenne / matiere.length;
     }
 
+    /**
+     * Il écrit le nom, le prénom et la moyenne de l'élève dans un fichier
+     */
     public void saveStudent() {
-        // save student in a file
         File file = new File("src/com/swing/etudiants/listeClasse");
         try {
             FileWriter writer = new FileWriter(file, true);
@@ -44,6 +45,12 @@ public class Etudiant {
         }
     }
 
+    /**
+     * Il lit le fichier, divise les lignes, divise les données, crée un tableau de matières et ajoute l'étudiant à la
+     * liste
+     *
+     * @return Une liste d'étudiants
+     */
     public static ArrayList<Etudiant> getEtudiants() {
         ArrayList<Etudiant> etudiants = new ArrayList<>();
         File file = new File("src/com/swing/etudiants/listeClasse");

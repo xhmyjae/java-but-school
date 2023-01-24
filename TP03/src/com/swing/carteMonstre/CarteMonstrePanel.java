@@ -3,7 +3,6 @@ package com.swing.carteMonstre;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -16,6 +15,9 @@ public class CarteMonstrePanel extends JPanel {
         initialize();
     }
 
+    /**
+     * Il crée une carte de monstre aléatoire, affiche ses informations et permet à l'utilisateur de l'enregistrer
+     */
     public void initialize() {
         setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         setBackground(Color.decode("#272640"));

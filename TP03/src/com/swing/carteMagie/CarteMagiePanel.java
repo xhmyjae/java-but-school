@@ -14,6 +14,9 @@ public class CarteMagiePanel extends JPanel {
         initialize();
     }
 
+    /**
+     * Il génère une carte aléatoire, l'affiche et permet à l'utilisateur de la sauvegarder
+     */
     public void initialize() {
         setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         setBackground(Color.decode("#272640"));

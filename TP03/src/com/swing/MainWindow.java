@@ -33,12 +33,10 @@ public class MainWindow {
     }
 
     public void menu() throws IOException {
-        // Menu panel
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         menuPanel.setBackground(Color.decode("#212F45"));
         menuPanel.setPreferredSize(new Dimension(240,720));
-        // Menu buttons
         JButton button1 = new JButton("Etudiants");
         menuButtonDesign(menuPanel, button1);
         JButton button2 = new JButton("JButtons");
@@ -53,7 +51,6 @@ public class MainWindow {
         menuButtonDesign(menuPanel, button6);
         frame.add(menuPanel, BorderLayout.WEST);
 
-        // Main panel
         CardLayout cardLayout = new CardLayout();
         cardLayout.setHgap(0);
         cardLayout.setVgap(0);
@@ -91,6 +88,12 @@ public class MainWindow {
         button6.addActionListener(e -> cardLayout.show(mainPanel, "carteMagiePanel"));
     }
 
+    /**
+     * Cette fonction définit la taille, la police, l'arrière-plan, le premier plan, le focus et la bordure d'un bouton
+     *
+     * @param menuPanel Le panneau auquel le bouton sera ajouté.
+     * @param button Le bouton que vous souhaitez concevoir.
+     */
     private void menuButtonDesign(JPanel menuPanel, JButton button) {
         button.setPreferredSize(new Dimension(240, 60));
         button.setFont(new Font("Bahnschrift", Font.PLAIN, 20));

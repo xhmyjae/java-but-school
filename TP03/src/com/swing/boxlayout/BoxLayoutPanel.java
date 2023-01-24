@@ -11,6 +11,9 @@ public class BoxLayoutPanel extends JPanel {
         initialize();
     }
 
+    /**
+     * Il crée un panneau avec deux champs de texte et deux boutons, et ajoute des écouteurs d'action aux boutons
+     */
     public void initialize() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setPreferredSize(new Dimension(800, 600));
@@ -27,12 +30,6 @@ public class BoxLayoutPanel extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = GridBagConstraints.RELATIVE;
         gbc.gridy = GridBagConstraints.VERTICAL;
-//            info.setLayout(new GridBagLayout());
-//            GridBagConstraints gbc = new GridBagConstraints();
-//            gbc.gridx = 0;
-//            gbc.gridy = GridBagConstraints.RELATIVE;
-//            gbc.fill = GridBagConstraints.HORIZONTAL;
-//            gbc.insets = new Insets(10, 10, 10, 10);
         info.setPreferredSize(new Dimension(800, 50));
         info.setMaximumSize(new Dimension(800, 50));
 
@@ -72,9 +69,16 @@ public class BoxLayoutPanel extends JPanel {
         cancel.addActionListener(e -> showMessage(cancel, textField1, textField2));
     }
 
+    /**
+     * Cette fonction affiche une boîte de dialogue de message avec le texte du bouton, le texte du champ de texte et le
+     * texte du champ de mot de passe.
+     *
+     * @param button Le bouton qui a été cliqué.
+     * @param nom le nom du champ de texte
+     * @param pw Le champ mot de passe.
+     */
     private void showMessage(JButton button, JTextField nom, JPasswordField pw) {
         JOptionPane.showMessageDialog(this, "Vous avez cliqué sur : " + button.getText() + "\n Nom : " + nom.getText() + "\n Mot de passe : " + pw.getText());
-
     }
 
 }

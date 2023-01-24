@@ -38,12 +38,16 @@ public class Monstre extends Carte {
         return def;
     }
 
+    /**
+     * Il enregistre les attributs de la carte dans un fichier
+     *
+     * @param numero le numéro de carte
+     */
     @Override
     public void saveCarte(String numero) throws FileNotFoundException {
         super.saveCarte(numero);
         File file = new File("src/com/swing/yugioh/savedCartes/" + numero + ".txt");
         try {
-            // append to file
             FileWriter writer = new FileWriter(file, true);
             writer.write(this.niveau + ";" + this.attribut + ";" + this.type + ";" + this.atk + ";" + this.def + ";");
             writer.close();
@@ -52,6 +56,11 @@ public class Monstre extends Carte {
         }
     }
 
+    /**
+     * Il lit le fichier de la carte et charge les données dans la carte
+     *
+     * @param numero le numéro de carte
+     */
     @Override
     public void loadCarte(String numero) throws FileNotFoundException {
         super.loadCarte(numero);
@@ -76,7 +85,11 @@ public class Monstre extends Carte {
         }
     }
 
-    // generate random monster card
+    /**
+     * Il génère une carte monstre aléatoire
+     *
+     * @return Une carte monstre aléatoire.
+     */
     public static Monstre generateRandomMonsterCard() {
         String nom = "Monstre " + (int) (Math.random() * 100);
         String numero = "M" + (int) (Math.random() * 100);
