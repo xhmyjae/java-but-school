@@ -1,12 +1,19 @@
 package com.swing.etudiants;
 
+import com.swing.etudiants.PClasse.Classe;
 import com.swing.etudiants.PEtudiant.Etudiant;
+import com.swing.yugioh.EnumAttributsMonstre;
 import utils.utils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -19,11 +26,16 @@ public class EtudiantsPanel extends JPanel {
     }
 
     public void initialize() {
+        setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        setPreferredSize(new Dimension(1020, 720));
+        Classe classe = new Classe(Etudiant.getEtudiants());
         final int[] indexMatiere = {0};
         Map<JTextField, Map<JTextField, JComboBox>> map = new HashMap();
 
         JPanel panelLeft = new JPanel();
+//        panelLeft.setPreferredSize(new Dimension(300, 710));
         JPanel panelRight = new JPanel();
+//        panelRight.setPreferredSize(new Dimension(250, 710));
 
         panelLeft.setLayout(new BoxLayout(panelLeft, BoxLayout.Y_AXIS));
         add(panelLeft);
@@ -132,6 +144,7 @@ public class EtudiantsPanel extends JPanel {
 
         JButton buttonValider = new JButton("Valider");
         utils.buttonDesign(buttonValider, panelLeft, 200, 30);
+        Classe finalClasse = classe;
         buttonValider.addActionListener(e -> {
             String nom = textFieldNom.getText();
             String prenom = textFieldPrenom.getText();
@@ -151,7 +164,8 @@ public class EtudiantsPanel extends JPanel {
                             String note = k1.getText();
                             String coef = v1.getSelectedItem().toString();
                             Note note1 = new Note(Double.parseDouble(note), Integer.parseInt(coef));
-                            notes[v1.getSelectedIndex()] = note1;
+                            System.out.println(note1);
+                            notes[i[0] - 1] = note1;
 
                             if (Objects.equals(note, "")) {
                                 JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -162,6 +176,7 @@ public class EtudiantsPanel extends JPanel {
                     }
                 });
                 Etudiant etudiant = new Etudiant(nom, prenom, matieres);
+                finalClasse.addEtudiant(etudiant);
                 // reload page window
                 revalidate();
                 repaint();
@@ -171,14 +186,37 @@ public class EtudiantsPanel extends JPanel {
         // right panel
         panelRight.setLayout(new BoxLayout(panelRight, BoxLayout.Y_AXIS));
         panelRight.setBackground(Color.decode("#212F45"));
-//        panelRight.setPreferredSize(new Dimension(250, 600));
+        Double[] moyennes = new Double[classe.getEtudiants().length];
+        for (Etudiant etudiant : classe.getEtudiants()) {
+            JPanel panelEtudiant = new JPanel();
+            panelEtudiant.setLayout(new BoxLayout(panelEtudiant, BoxLayout.X_AXIS));
+            panelEtudiant.setBackground(Color.decode("#212F45"));
+            panelRight.add(panelEtudiant);
+
+            JLabel nomLabel = new JLabel(etudiant.getNom());
+            nomLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+            nomLabel.setForeground(Color.WHITE);
+            JLabel prenomLabel = new JLabel(etudiant.getPrenom());
+            prenomLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+            prenomLabel.setForeground(Color.WHITE);
+            JLabel moyenneLabel = new JLabel("Moyenne : " + etudiant.moyenne());
+            moyenneLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+            moyenneLabel.setForeground(Color.WHITE);
+            panelEtudiant.add(nomLabel);
+            panelEtudiant.add(prenomLabel);
+            panelEtudiant.add(moyenneLabel);
+
+            moyennes[classe.getEtudiants().length - 1] = etudiant.moyenne();
+        }
+        JLabel labelMoyenneClasse = new JLabel("Moyenne de la classe : " + classe.moyenneClasse(moyennes));
 
         JLabel labelEtudiant = new JLabel("Etudiants :");
         labelEtudiant.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
         labelEtudiant.setForeground(Color.WHITE);
         panelRight.add(labelEtudiant);
 
-
+        revalidate();
+        repaint();
     }
 }
 

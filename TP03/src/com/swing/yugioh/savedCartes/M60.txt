@@ -1,0 +1,1 @@
+Monstre 51;Description 74;Monstre;9;VENT;Type 84;225;976;

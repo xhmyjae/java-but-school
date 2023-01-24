@@ -8,7 +8,8 @@ public interface ICarteYuGiOh {
     public String getNom();
     public String getNumero();
     public String getDescription();
+    public String getCardType();
 
-    public void saveCarte(String numero, File file) throws FileNotFoundException;
+    public void saveCarte(String numero) throws FileNotFoundException;
     public void loadCarte(String numero) throws FileNotFoundException;
 }

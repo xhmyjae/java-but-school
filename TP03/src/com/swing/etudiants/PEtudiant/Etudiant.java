@@ -2,10 +2,9 @@ package com.swing.etudiants.PEtudiant;
 
 import com.swing.etudiants.Matiere;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 public class Etudiant {
@@ -35,21 +34,50 @@ public class Etudiant {
 
     public void saveStudent() {
         // save student in a file
-        File file = new File("src/com/swing/etudiants/PEtudiant/listeClasse");
+        File file = new File("src/com/swing/etudiants/listeClasse");
         try {
-            if (file.createNewFile()) {
-                try {
-                    FileWriter writer = new FileWriter(file, true);
-                    writer.write(this.nom + ";" + this.prenom + ";" + this.moyenne() + ";\n");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                throw new FileNotFoundException("Le fichier existe déjà");
-            }
+            FileWriter writer = new FileWriter(file, true);
+            writer.write(this.nom + ";" + this.prenom + ";" + this.moyenne() + "\n");
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static ArrayList<Etudiant> getEtudiants() {
+        ArrayList<Etudiant> etudiants = new ArrayList<>();
+        File file = new File("src/com/swing/etudiants/listeClasse");
+        if (file.exists() && file.length() > 0) {
+            try {
+                FileReader reader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(reader);
+                String line = bufferedReader.readLine();
+                String[] data = line.split("\n");
+                for (String datum : data) {
+                    String[] dataEtudiant = datum.split(";");
+                    String nom = dataEtudiant[0];
+                    String prenom = dataEtudiant[1];
+                    String[] dataMatiere = dataEtudiant[2].split(",");
+                    Matiere[] matieres = new Matiere[dataMatiere.length];
+                    etudiants.add(new Etudiant(nom, prenom, matieres));
+                }
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return etudiants;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public Matiere[] getMatiere() {
+        return matiere;
     }
 }

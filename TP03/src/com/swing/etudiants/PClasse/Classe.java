@@ -2,27 +2,42 @@ package com.swing.etudiants.PClasse;
 
 import com.swing.etudiants.Matiere;
 import com.swing.etudiants.PEtudiant.Etudiant;
+import com.swing.yugioh.EnumAttributsMonstre;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
-public class Classe extends Etudiant {
+public class Classe {
+    ArrayList<Etudiant> etudiants;
 
-    public Classe(String nom, String prenom, Matiere[] matiere) {
-        super(nom, prenom, matiere);
+    public Classe(ArrayList<Etudiant> etudiants) {
+        this.etudiants = etudiants;
     }
 
-    public void afficher() {
+    public void addEtudiant(Etudiant etudiant) {
+        etudiants.add(etudiant);
+        etudiant.saveStudent();
     }
 
-    public Etudiant getEtudiant(int i) {
-        return null;
-    }
-
-    public float moyenneClasse(String matiere) {
-        return 0;
+    public float moyenneClasse(Double[] moyennes) {
+        float moyenne = 0;
+        for (Double moyenneEtudiant : moyennes) {
+            moyenne += moyenneEtudiant;
+        }
+        return moyenne / moyennes.length;
     }
 
     public void setEtudiant(Etudiant etudiant) {
+    }
+
+    public Etudiant[] getEtudiants() {
+        return etudiants.toArray(new Etudiant[0]);
     }
 
 }

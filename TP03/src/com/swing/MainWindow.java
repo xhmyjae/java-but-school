@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import com.swing.afficherCartes.AfficherCartesPanel;
 import com.swing.boxlayout.BoxLayoutPanel;
+import com.swing.carteMagie.CarteMagiePanel;
 import com.swing.carteMonstre.CarteMonstrePanel;
 import com.swing.etudiants.EtudiantsPanel;
 import com.swing.jbuttons.JButtonsPanel;
@@ -46,8 +47,10 @@ public class MainWindow {
         menuButtonDesign(menuPanel, button3);
         JButton button4 = new JButton("Afficher cartes");
         menuButtonDesign(menuPanel, button4);
-        JButton button5 = new JButton("Carte monstre");
+        JButton button5 = new JButton("Cartes monstre");
         menuButtonDesign(menuPanel, button5);
+        JButton button6 = new JButton("Cartes magie piege");
+        menuButtonDesign(menuPanel, button6);
         frame.add(menuPanel, BorderLayout.WEST);
 
         // Main panel
@@ -66,22 +69,26 @@ public class MainWindow {
         BoxLayoutPanel boxLayoutPanel = new BoxLayoutPanel();
         AfficherCartesPanel afficherCartesPanel = new AfficherCartesPanel();
         CarteMonstrePanel carteMonstrePanel = new CarteMonstrePanel();
+        CarteMagiePanel carteMagiePanel = new CarteMagiePanel();
         etudiantsPanel.setBackground(Color.decode("#272640"));
         jButtonsPanel.setBackground(Color.decode("#272640"));
         boxLayoutPanel.setBackground(Color.decode("#272640"));
         afficherCartesPanel.setBackground(Color.decode("#272640"));
         carteMonstrePanel.setBackground(Color.decode("#272640"));
+        carteMagiePanel.setBackground(Color.decode("#272640"));
         mainPanel.add(etudiantsPanel, "etudiantsPanel");
         mainPanel.add(jButtonsPanel, "jButtonsPanel");
         mainPanel.add(boxLayoutPanel, "boxLayoutPanel");
         mainPanel.add(afficherCartesPanel, "afficherCartesPanel");
         mainPanel.add(carteMonstrePanel, "carteMonstrePanel");
+        mainPanel.add(carteMagiePanel, "carteMagiePanel");
 
         button1.addActionListener(e -> cardLayout.show(mainPanel, "etudiantsPanel"));
         button2.addActionListener(e -> cardLayout.show(mainPanel, "jButtonsPanel"));
         button3.addActionListener(e -> cardLayout.show(mainPanel, "boxLayoutPanel"));
         button4.addActionListener(e -> cardLayout.show(mainPanel, "afficherCartesPanel"));
         button5.addActionListener(e -> cardLayout.show(mainPanel, "carteMonstrePanel"));
+        button6.addActionListener(e -> cardLayout.show(mainPanel, "carteMagiePanel"));
     }
 
     private void menuButtonDesign(JPanel menuPanel, JButton button) {

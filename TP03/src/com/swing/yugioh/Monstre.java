@@ -9,8 +9,8 @@ public class Monstre extends Carte {
     private Integer atk;
     private Integer def;
 
-    public Monstre(String nom, String numero, String description, Integer niveau, EnumAttributsMonstre.attribut attribut, String type, Integer atk, Integer def) {
-        super(nom, numero, description);
+    public Monstre(String nom, String numero, String description, String cardType, Integer niveau, EnumAttributsMonstre.attribut attribut, String type, Integer atk, Integer def) {
+        super(nom, numero, description, cardType);
         this.niveau = niveau;
         this.attribut = attribut;
         this.type = type;
@@ -39,8 +39,9 @@ public class Monstre extends Carte {
     }
 
     @Override
-    public void saveCarte(String numero, File file) throws FileNotFoundException {
-        super.saveCarte(numero, file);
+    public void saveCarte(String numero) throws FileNotFoundException {
+        super.saveCarte(numero);
+        File file = new File("src/com/swing/yugioh/savedCartes/" + numero + ".txt");
         try {
             // append to file
             FileWriter writer = new FileWriter(file, true);
@@ -54,7 +55,7 @@ public class Monstre extends Carte {
     @Override
     public void loadCarte(String numero) throws FileNotFoundException {
         super.loadCarte(numero);
-        File file = new File("src/com/swing/yugioh/savesCartes/monstres/" + numero + ".txt");
+        File file = new File("src/com/swing/yugioh/savesCartes/" + numero + ".txt");
         if (file.exists()) {
             try {
                 FileReader reader = new FileReader(file);
@@ -74,4 +75,19 @@ public class Monstre extends Carte {
             return;
         }
     }
+
+    // generate random monster card
+    public static Monstre generateRandomMonsterCard() {
+        String nom = "Monstre " + (int) (Math.random() * 100);
+        String numero = "M" + (int) (Math.random() * 100);
+        String description = "Description " + (int) (Math.random() * 100);
+        String cardType = "Monstre";
+        Integer niveau = (int) (Math.random() * 10);
+        EnumAttributsMonstre.attribut attribut = EnumAttributsMonstre.attribut.values()[(int) (Math.random() * (EnumAttributsMonstre.attribut.values().length))];
+        String type = "Type " + (int) (Math.random() * 100);
+        Integer atk = (int) (Math.random() * 1000);
+        Integer def = (int) (Math.random() * 1000);
+        return new Monstre(nom, numero, description, cardType, niveau, attribut, type, atk, def);
+    }
+
 }
